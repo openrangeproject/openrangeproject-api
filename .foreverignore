@@ -1,0 +1,15 @@
+**/.tmp/**
+**/node_modules/**
+**/assets/**
+**/tasks/**
+**/views/**
+**/.editorconfig
+**/.eslintignore
+**/.eslintrc
+**/.gitignore
+**/Gruntfile.js
+**/.npmrc
+**/package.json
+**/package-lock.json
+**/README.md
+**/.sailsrc
