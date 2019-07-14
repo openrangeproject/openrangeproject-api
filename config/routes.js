@@ -19,13 +19,13 @@ module.exports.routes = {
   'GET /networks': 'networks',
   'GET /networks/:id': 'networks-detail',
   'POST /networks/create': 'networks-create',
-  'POST /networks/:id/update': 'networks-update'
+  'POST /networks/:id/update': 'networks-update',
   'GET /machines/vms': 'vms',
   'GET /machines/vms/:id': 'vms-detail',
   'POST /machines/vms/create': 'vms-create',
   'POST /machines/vms/:id/update': 'vms-update',
   'GET /machines/vms/:id/interfaces': 'vms-interfaces',
-  'POST /machines/vms/:id/interfaces/create': 'vms-interfaces-create'
+  'POST /machines/vms/:id/interfaces/create': 'vms-interfaces-create',
   'DELETE /machines/vms/:id/interfaces/:ifid/delete': 'vms-interfaces-delete'
 
 
