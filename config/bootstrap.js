@@ -31,4 +31,5 @@ module.exports.bootstrap = async function() {
     { name: 'Basic Linux Web Server', description: "Centos7 Apache Web Server", os_name: "Centos", os_version: "7", file: '', username: "root", password: "centos"},
     { name: "Windows Work Station", description: "Barebones Windows Workstaion", os_name: "Windows", os_version: "10", file: '', username: "administrator", password: "admin"},
   ]);
+
 };

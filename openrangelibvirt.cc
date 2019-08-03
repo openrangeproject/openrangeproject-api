@@ -37,7 +37,6 @@ virConnectPtr connect(Isolate* isolate, Local<Value> x){
 // Handles libvirt requests from Nodejs
 void libvirtDo(const FunctionCallbackInfo<Value>& args){
     Isolate* isolate = args.GetIsolate();
-    if (argsLengthFail(isolate, 2, args.Length(), NUM_ARGS_ERROR)) return;
     String::Utf8Value str(isolate, args[0]);
     char* lvDo = *str;
     virConnectPtr conn = connect(isolate, args[1]);
@@ -45,8 +44,23 @@ void libvirtDo(const FunctionCallbackInfo<Value>& args){
     // Map input from Nodejs to an action with libvirt. It's best to 
     // keep it one-to-one and follow libvirts naming convention. Complex
     // interactions should happen on the Nodejs side.
-    if (strcmp(lvDo, "virConnectNumOfDomains") == 0) args.GetReturnValue().Set(virConnectNumOfDomains(conn));
-    else if (strcmp(lvDo, "virConnectNumOfDefinedDomains") == 0) args.GetReturnValue().Set(virConnectNumOfDefinedDomains(conn));
+    if (strcmp(lvDo, "virConnectNumOfDomains") == 0) {
+        if (argsLengthFail(isolate, 2, args.Length(), NUM_ARGS_ERROR)) return;
+        args.GetReturnValue().Set(virConnectNumOfDomains(conn));
+    } 
+    else if (strcmp(lvDo, "virConnectNumOfDefinedDomains") == 0) {
+        if (argsLengthFail(isolate, 2, args.Length(), NUM_ARGS_ERROR)) return;
+        args.GetReturnValue().Set(virConnectNumOfDefinedDomains(conn));
+    } 
+    else if (strcmp(lvDo, "virNetworkCreateXML") == 0) {
+        if (argsLengthFail(isolate, 3, args.Length(), NUM_ARGS_ERROR)) return;
+        String::Utf8Value str(isolate, args[2]);
+        char* xmlDesc = *str;
+        virNetworkPtr network;
+        network = virNetworkCreateXML(conn, xmlDesc);
+        if (network == NULL) args.GetReturnValue().Set(true);
+        else args.GetReturnValue().Set(true);
+    } 
 }
 
 void Init(Local<Object> exports) {
