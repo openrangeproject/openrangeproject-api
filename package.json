@@ -1,8 +1,8 @@
 {
-  "name": "test-project",
+  "name": "OpenRangeProject",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "Backend app for the OpenRangeProject",
   "keywords": [],
   "dependencies": {
     "sails": "^1.2.3",
@@ -24,11 +24,7 @@
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
   },
   "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ubuntu/test-project.git"
-  },
-  "author": "ubuntu",
+  "author": "OpenRangeProject",
   "license": "",
   "engines": {
     "node": "^12.6"
