@@ -18,13 +18,16 @@ https://ubuntu.com/download/server
 `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash`    
 `source ~/.profile`  
 
-`nvm install 12`  
+`nvm install 12` 
+
+### Install Required Packages  
 `npm install sails -g`  
 `npm install node-gyp -g`  
 
-### Install OpenRangeProject
+### Install OpenRangeProject and Configure
 `git clone https://github.com/openrangeproject/openrangeproject-api`  
-`cd openrange-api`  
+`cd openrangeproject-api`  
 `npm install`  
 `node-gyp configure`  
+`node-gyp build`
 
