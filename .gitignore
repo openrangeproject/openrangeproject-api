@@ -132,3 +132,4 @@ lib-cov
 *.out
 *.pid
 /build/
+package-lock.json
