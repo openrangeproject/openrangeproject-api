@@ -1,3 +1,6 @@
+var libvirt = require("../../build/Release/openrangelibvirt");
+var connString = "qemu:///system";
+
 module.exports = {
 
 
@@ -18,7 +21,7 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    console.log("Number of networks: " + libvirt.libvirtDo("virConnectListAllNetworks", connString));
     // All done.
     return;
 

@@ -52,7 +52,7 @@ void libvirtDo(const FunctionCallbackInfo<Value>& args){
         if (argsLengthFail(isolate, 2, args.Length(), NUM_ARGS_ERROR)) return;
         args.GetReturnValue().Set(virConnectNumOfDefinedDomains(conn));
     } 
-    else if (strcmp(lvDo, "virNetworkCreateXML") == 0) {
+    else if (strcmp(lvDo, "virNetworkDefineXML") == 0) {
         if (argsLengthFail(isolate, 3, args.Length(), NUM_ARGS_ERROR)) return;
         String::Utf8Value str(isolate, args[2]);
         char* xmlDesc = *str;
@@ -60,7 +60,11 @@ void libvirtDo(const FunctionCallbackInfo<Value>& args){
         network = virNetworkCreateXML(conn, xmlDesc);
         if (network == NULL) args.GetReturnValue().Set(true);
         else args.GetReturnValue().Set(true);
-    } 
+    } else if (strcmp(lvDo, "virConnectListAllNetworks") == 0){
+        if (argsLengthFail(isolate, 2, args.Length(), NUM_ARGS_ERROR)) return;
+        virNetworkPtr **nets;
+        args.GetReturnValue().Set(virConnectListAllNetworks(conn, nets, 63));
+    }
 }
 
 void Init(Local<Object> exports) {

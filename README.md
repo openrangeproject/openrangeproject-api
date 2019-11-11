@@ -24,7 +24,7 @@ https://ubuntu.com/download/server
 `npm install sails -g`  
 `npm install node-gyp -g`  
 
-### Install OpenRangeProject and Configure
+### Install OpenRangeProject 
 `git clone https://github.com/openrangeproject/openrangeproject-api`  
 `cd openrangeproject-api`  
 `npm install`  
